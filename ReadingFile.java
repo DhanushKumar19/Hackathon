@@ -13,15 +13,12 @@ public class ReadingFile {
 	static int i = 0;
 
 	public static void main(String[] args) {
-		double sum=0;
-		double avg=0;
-		double max=0;
+		double sum=0,avg=0,max=0;
 		Connection myConn = null;
-    	Statement myStmt = null;
-    	ResultSet myRs = null;
+    		Statement myStmt = null;
+    		ResultSet myRs = null;
 		try {
 			
-			// 1. Get a connection to database
     		myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hack", "hack" , "hack123");
     		
     		//System.out.println("Database connection successful!\n");
@@ -30,7 +27,7 @@ public class ReadingFile {
     		myStmt = myConn.createStatement();
     		
     		
-    	PreparedStatement pStmt = myConn.prepareStatement("INSERT into hack (transactionname, average, maximum) values(?,?,?)");
+    		PreparedStatement pStmt = myConn.prepareStatement("INSERT into hack (transactionname, average, maximum) values(?,?,?)");
     	
     	
 			String row;
@@ -49,10 +46,10 @@ public class ReadingFile {
 					}
 					
 					
-	double reqCPU = Double.parseDouble(stringTokenizer.nextElement().toString());
+			double reqCPU = Double.parseDouble(stringTokenizer.nextElement().toString());
 					if(max<reqCPU)
 						max=reqCPU;
-						sum+=reqCPU;
+					sum+=reqCPU;
 					
 					while(x<11) {
 						stringTokenizer.nextElement().toString();
