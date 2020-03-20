@@ -20,16 +20,9 @@ public class ReadingFile {
 		try {
 			
     		myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hack", "hack" , "hack123");
-    		
-    		//System.out.println("Database connection successful!\n");
-			
-    		
     		myStmt = myConn.createStatement();
-    		
-    		
     		PreparedStatement pStmt = myConn.prepareStatement("INSERT into hack (transactionname, average, maximum) values(?,?,?)");
-    	
-    	
+   
 			String row;
 			br = new BufferedReader(new FileReader("C:\\Users\\Admin\\Desktop\\JTL\\hackathon\\Sample.txt"));
 			while ((row = br.readLine()) != null) {
