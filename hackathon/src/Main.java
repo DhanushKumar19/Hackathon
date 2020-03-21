@@ -82,8 +82,8 @@ public class Main
 						 PrintWriter out = new PrintWriter(new FileWriter("C:\\Users\\Admin\\Desktop\\hackathon\\finalpage.html"));
 						 
 				         out.println("<h1>CPU VALUES</h1>");
-				         out.println("<h2>MAXIMUM CPU TIME</h2> <br> <p>"+ maximum+"</p>");
-				         out.println("<h2>AVERAGE CPU TIME</h2> <br> <p>"+average+"</p>");     
+				         out.println("<h2>MAXIMUM CPU TIME</h2>  <p>"+ maximum+"</p> <br>");
+				         out.println("<h2>AVERAGE CPU TIME</h2>  <p>"+average+"</p>");     
 				      
 				         out.close();
 					}
