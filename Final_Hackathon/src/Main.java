@@ -76,7 +76,7 @@ public class Main {
 		    	count++;
 		  // Adding values to json
 		    	val = Integer.toString(count)+ "S";
-		  		obj2.put(val, mbVal);
+		  	obj2.put(val, mbVal);
 		  
 		 }
 		 }
