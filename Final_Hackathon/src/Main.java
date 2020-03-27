@@ -6,13 +6,43 @@ import java.text.DecimalFormat;
 import org.json.simple.*;
 public class Main {
 
-   	
+	static JSONObject obj=new JSONObject();
+	static JSONObject obj2=new JSONObject();
+	
+	// complete json
+   	static void toUpdate(double avg,double max)
+	{
+		 avg = Double.parseDouble(df.format(avg));
+		 max = Double.parseDouble(df.format(max));
+		
+	// Final json file with max , avg and values
+		 obj.put("AverageMemory(MB)", avg);
+		 obj.put("MaximumMemory(MB)", max);
+		 obj.put("Values",obj2);
+
+	 // Writing json as separate file
+		 FileWriter file1=new FileWriter("C:\\Users\\Admin\\Desktop\\Final_Hackathon\\mem_json.json");
+		 file1.write(obj.toJSONString());
+	}
+	
+	//complete db 
+	static void connectDb(double avg,double max){
+		avg = Double.parseDouble(df.format(avg));
+		max = Double.parseDouble(df.format(max));
+		
+		// Adding data to the db
+		 Connection connect=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","root","root123");
+		 Statement st= connect.createStatement();
+		 st.executeUpdate("create table Mem_table(Maximum_Value DECIMAL(10,2),Average_Value DECIMAL(10,2));");
+		 String str="INSERT into Mem_table (Maximum_Value,Average_Value) values('"+max+"','"+avg+"')";
+		 st.executeUpdate(str);
+	}
+	
 	public static void main(String[] args)  throws NumberFormatException, IOException, SQLException {
 		
 		BufferedReader br=null;
 		DecimalFormat df = new DecimalFormat("#.00");
-		JSONObject obj=new JSONObject();
-		JSONObject obj2=new JSONObject();
+		
 		
 		int count = 0;
 		double kbVal,mbVal=0,Total=0,avg=0,max=0;
@@ -54,22 +84,9 @@ public class Main {
 		 avg = (Total/count);
 		 avg = Double.parseDouble(df.format(avg));
 		 
-	  // Final json file with max , avg and values
-		 obj.put("AverageMemory(MB)", avg);
-		 obj.put("MaximumMemory(MB)", max);
-		 obj.put("Values",obj2);
-
-	 // Writing	json as separate file
-		 FileWriter file1=new FileWriter("C:\\Users\\Admin\\Desktop\\Final_Hackathon\\mem_json.json");
-		 file1.write(obj.toJSONString());
-			
-		 
-	  // Adding data to the db
-		 Connection connect=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","root","root123");
-		 Statement st= connect.createStatement();
-		 st.executeUpdate("create table Mem_table(Maximum_Value DECIMAL(10,2),Average_Value DECIMAL(10,2));");
-		 String str="INSERT into Mem_table (Maximum_Value,Average_Value) values('"+max+"','"+avg+"')";
-		 st.executeUpdate(str);
+		Main.toUpdate(avg,max);
+	  	Main.connectDb(avg,max);
+	  
 	}
 
 }
