@@ -8,7 +8,7 @@ public class Main {
 
 	static JSONObject obj=new JSONObject();
 	static JSONObject obj2=new JSONObject();
-	
+	static DecimalFormat df = new DecimalFormat("#.00");
 	// complete json
    	static void toUpdate(double avg,double max)
 	{
@@ -41,8 +41,6 @@ public class Main {
 	public static void main(String[] args)  throws NumberFormatException, IOException, SQLException {
 		
 		BufferedReader br=null;
-		DecimalFormat df = new DecimalFormat("#.00");
-		
 		
 		int count = 0;
 		double kbVal,mbVal=0,Total=0,avg=0,max=0;
