@@ -26,7 +26,7 @@ public class Main {
 	}
 	
 	//complete db 
-	static void connectDb(double avg,double max){
+	static void connectDb(double avg,double max) throws SQLException{
 		avg = Double.parseDouble(df.format(avg));
 		max = Double.parseDouble(df.format(max));
 		
